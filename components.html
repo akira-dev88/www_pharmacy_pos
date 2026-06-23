@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Library | Acme SaaS Academy Design System</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f7fb;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+
+        /* Component Preview Layout */
+        .component-nav {
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            padding: 0 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e2b3c 0%, #0f1722 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .component-tabs {
+            display: flex;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 4px;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s;
+            color: #4b5563;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #005bd3;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 32px;
+        }
+
+        .component-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .component-section.active-section {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+            border: 1px solid #edf2f7;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .component-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f1722;
+        }
+
+        .card-badge {
+            background: #eef2ff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        .preview-area {
+            margin-bottom: 20px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .code-snippet {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-family: 'SF Mono', monospace;
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+
+        hr {
+            margin: 40px 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0f1722;
+            letter-spacing: -0.3px;
+        }
+
+        .subsection-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 32px 0 20px 0;
+            color: #334155;
+        }
+
+        /* Button Styles (reusable) */
+        .btn-primary {
+            background: #005bd3;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #004db3;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: white;
+            border: 1px solid #dce3ec;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #f8fafd;
+            border-color: #cbdde9;
+        }
+
+        /* Sidebar Preview */
+        .sidebar-preview {
+            width: 260px;
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid #edf2f7;
+        }
+
+        .lesson-link-demo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .lesson-link-demo:hover {
+            background: #f6f8fc;
+        }
+
+        .lesson-link-demo.active {
+            background: #eff3fa;
+            color: #005bd3;
+            font-weight: 600;
+        }
+
+        /* Color Palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 16px;
+        }
+
+        .color-item {
+            text-align: center;
+        }
+
+        .color-swatch {
+            height: 80px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .color-name {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-size: 0.7rem;
+            color: #64748b;
+            font-family: monospace;
+        }
+
+        /* Typography */
+        .typography-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #dce3ec;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #005bd3;
+            box-shadow: 0 0 0 3px rgba(0, 91, 211, 0.1);
+        }
+
+        /* Toast Message */
+        .toast-demo {
+            background: #1e293b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #e6f7e6;
+            color: #0e6245;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-info {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        /* Callout Variations */
+        .callout-info {
+            background: #eef6ff;
+            border-left: 4px solid #005bd3;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .callout-success {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        .callout-warning {
+            background: #fefce8;
+            border-left: 4px solid #eab308;
+            padding: 16px;
+            border-radius: 12px;
+        }
+
+        /* Navigation Buttons Pair */
+        .nav-buttons-pair {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .component-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-container {
+                padding: 20px;
+            }
+            .component-tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="component-nav">
+    <div class="nav-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-palette"></i>
+            </div>
+            <span>Acme SaaS · Design System</span>
+        </div>
+        <div class="component-tabs">
+            <button class="tab-btn active" data-tab="basics">Basics</button>
+            <button class="tab-btn" data-tab="components">Components</button>
+            <button class="tab-btn" data-tab="layout">Layout</button>
+            <button class="tab-btn" data-tab="colors">Colors</button>
+        </div>
+    </div>
+</div>
+
+<div class="main-container">
+    <!-- BASICS SECTION -->
+    <div id="basics" class="component-section active-section">
+        <h1 class="section-title">Typography & Core Elements</h1>
+        
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Headings</span>
+                    <span class="card-badge">Typography</span>
+                </div>
+                <div class="preview-area">
+                    <h1 style="font-size: 2.2rem; font-weight: 700;">H1 Heading</h1>
+                    <h2 style="font-size: 1.5rem; font-weight: 600;">H2 Heading</h2>
+                    <h3 style="font-size: 1.25rem; font-weight: 600;">H3 Heading</h3>
+                    <p style="color: #4b5563;">Body text with comfortable line height for readability.</p>
+                    <p style="font-size: 0.875rem; color: #6b7280;">Small / Caption text</p>
+                </div>
+                <div class="code-snippet">
+                    &lt;h1&gt;Heading 1&lt;/h1&gt;<br>
+                    &lt;p&gt;Body text...&lt;/p&gt;
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Buttons</span>
+                    <span class="card-badge">Actions</span>
+                </div>
+                <div class="preview-area">
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button class="btn-primary">Primary Button</button>
+                        <button class="btn-secondary">Secondary Button</button>
+                        <button class="btn-primary" style="background: white; color: #005bd3; border: 1px solid #005bd3;">Outline</button>
+                    </div>
+                    <div class="nav-buttons-pair">
+                        <button class="btn-secondary"><i class="fas fa-arrow-left"></i> Previous</button>
+                        <button class="btn-secondary">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="code-snippet">
+                    &lt;button class="btn-primary"&gt;Primary&lt;/button&gt;
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Callout / Alerts</span>
+                    <span class="card-badge">Messages</span>
+                </div>
+                <div class="preview-area">
+                    <div class="callout-info">
+                        <i class="fas fa-info-circle"></i> This is an informational message.
+                    </div>
+                    <div class="callout-success">
+                        <i class="fas fa-check-circle"></i> Success! Lesson completed.
+                    </div>
+                    <div class="callout-warning">
+                        <i class="fas fa-exclamation-triangle"></i> Warning: Please review your settings.
+                    </div>
+                </div>
+                <div class="code-snippet">
+                    &lt;div class="callout-info"&gt;...&lt;/div&gt;
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-title">Form Elements</div>
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Input Fields</span>
+                    <span class="card-badge">Forms</span>
+                </div>
+                <div class="preview-area">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="student@acme.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Option</label>
+                        <select>
+                            <option>Getting Started</option>
+                            <option>Core Concepts</option>
+                            <option>Advanced</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="2" placeholder="Your feedback..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Badges & Tags</span>
+                    <span class="card-badge">Status</span>
+                </div>
+                <div class="preview-area">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <span class="badge badge-success"><i class="fas fa-check"></i> Completed</span>
+                        <span class="badge badge-warning"><i class="fas fa-clock"></i> In Progress</span>
+                        <span class="badge badge-info"><i class="fas fa-star"></i> Pro Lesson</span>
+                        <span class="badge" style="background: #f1f5f9;">Draft</span>
+                    </div>
+                    <div style="margin-top: 16px;">
+                        <div class="badge-pro" style="background: #f2f4f8; padding: 6px 14px; border-radius: 40px; display: inline-flex; gap: 8px;">
+                            <i class="fas fa-chalkboard-user"></i> Pro Learning
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMPONENTS SECTION -->
+    <div id="components" class="component-section">
+        <h1 class="section-title">Reusable UI Components</h1>
+        
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Lesson Navigation Links</span>
+                    <span class="card-badge">Sidebar Item</span>
+                </div>
+                <div class="preview-area">
+                    <div style="border: 1px solid #edf2f7; border-radius: 16px; padding: 8px;">
+                        <a href="#" class="lesson-link-demo"><i class="fas fa-circle" style="font-size: 0.55rem;"></i> Introduction to SaaS</a>
+                        <a href="#" class="lesson-link-demo active"><i class="fas fa-circle" style="font-size: 0.55rem;"></i> Workflow Builder</a>
+                        <a href="#" class="lesson-link-demo"><i class="fas fa-circle" style="font-size: 0.55rem;"></i> API Integration</a>
+                    </div>
+                </div>
+                <div class="code-snippet">
+                    &lt;a href="#" class="lesson-link active"&gt;<br>
+                    &nbsp;&nbsp;&lt;i class="fas fa-circle"&gt;&lt;/i&gt; Lesson Title<br>
+                    &lt;/a&gt;
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Chapter Headers</span>
+                    <span class="card-badge">Section</span>
+                </div>
+                <div class="preview-area">
+                    <lesson-title style="display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #4b5563; margin-bottom: 12px;">
+                        <i class="far fa-folder-open"></i> Getting Started
+                    </lesson-title>
+                    <lesson-title style="display: block; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: #4b5563;">
+                        <i class="far fa-folder-open"></i> Core Concepts
+                    </lesson-title>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Loading Spinner</span>
+                    <span class="card-badge">Feedback</span>
+                </div>
+                <div class="preview-area">
+                    <div class="loading-spinner" style="display: flex; gap: 12px; align-items: center; color: #005bd3;">
+                        <i class="fas fa-spinner fa-pulse"></i> Loading lesson content...
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Toast / Notification</span>
+                    <span class="card-badge">Feedback</span>
+                </div>
+                <div class="preview-area">
+                    <div class="toast-demo">
+                        <i class="fas fa-check-circle"></i> Lesson saved successfully
+                    </div>
+                    <div class="toast-demo" style="background: #005bd3; margin-top: 8px;">
+                        <i class="fas fa-info-circle"></i> 3 new updates available
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-title">Hero & Media Blocks</div>
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Hero Image Placeholder</span>
+                    <span class="card-badge">Media</span>
+                </div>
+                <div class="preview-area">
+                    <div class="hero-image" style="background: #f1f5f9; border-radius: 16px; overflow: hidden;">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2364748b' font-size='14'%3EWorkflow Illustration%3C/text%3E%3C/svg%3E" alt="Demo" style="width: 100%;">
+                    </div>
+                    <p style="margin-top: 8px; font-size: 0.75rem; color: #6b7280;">Responsive image container with border radius</p>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Code Block</span>
+                    <span class="card-badge">Developer</span>
+                </div>
+                <div class="preview-area">
+                    <pre style="background: #1e293b; color: #e2e8f0; padding: 16px; border-radius: 12px; overflow-x: auto; font-size: 0.75rem;">&lt;?php<br>// Example workflow trigger<br>$workflow = new Automation();<br>$workflow->run();<br>?&gt;</pre>
+                </div>
+                <div class="code-snippet">
+                    &lt;pre&gt;&lt;code&gt;Your code here&lt;/code&gt;&lt;/pre&gt;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LAYOUT SECTION -->
+    <div id="layout" class="component-section">
+        <h1 class="section-title">Layout & Navigation Patterns</h1>
+        
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Sidebar Panel (Desktop)</span>
+                    <span class="card-badge">Layout</span>
+                </div>
+                <div class="preview-area">
+                    <div class="sidebar-preview">
+                        <div class="chapter" style="margin-bottom: 20px;">
+                            <lesson-title style="font-size: 0.7rem;">CHAPTER 1</lesson-title>
+                            <a href="#" class="lesson-link-demo active">Intro to Platform</a>
+                            <a href="#" class="lesson-link-demo">Setting up API</a>
+                        </div>
+                        <div class="chapter">
+                            <lesson-title style="font-size: 0.7rem;">CHAPTER 2</lesson-title>
+                            <a href="#" class="lesson-link-demo">Workflows</a>
+                            <a href="#" class="lesson-link-demo">Analytics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Mobile Menu Trigger</span>
+                    <span class="card-badge">Navigation</span>
+                </div>
+                <div class="preview-area">
+                    <button class="mobile-menu-btn" style="display: inline-flex; background: #f1f5f9; padding: 12px; border-radius: 12px; border: 1px solid #e2e8f0;">
+                        <i class="fas fa-bars"></i> Menu
+                    </button>
+                    <div style="margin-top: 12px; font-size: 0.75rem; color: #6b7280;">
+                        <i class="fas fa-arrow-left"></i> Slides from left on mobile
+                    </div>
+                </div>
+                <div class="code-snippet">
+                    &lt;button class="mobile-menu-btn"&gt;&lt;i class="fas fa-bars"&gt;&lt;/i&gt;&lt;/button&gt;
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Content Card</span>
+                    <span class="card-badge">Container</span>
+                </div>
+                <div class="preview-area">
+                    <div style="background: white; border: 1px solid #edf2f7; border-radius: 28px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                        <h3 style="margin-bottom: 12px;">Lesson Content</h3>
+                        <p style="color: #4b5563;">Main content area with rounded corners and subtle shadow.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-title">Responsive Breakpoints</div>
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Breakpoints Reference</span>
+                    <span class="card-badge">CSS</span>
+                </div>
+                <div class="preview-area">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;"><strong>Mobile:</strong> ≤ 768px</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid #f1f5f9;"><strong>Tablet:</strong> 769px - 1024px</li>
+                        <li style="padding: 8px 0;"><strong>Desktop:</strong> ≥ 1025px</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Utility Classes</span>
+                    <span class="card-badge">Helpers</span>
+                </div>
+                <div class="preview-area">
+                    <div class="callout-info" style="font-size: 0.8rem;">
+                        <code>.lesson-transition</code> - fade slide animation<br>
+                        <code>.menu-open</code> - lock body scroll on mobile<br>
+                        <code>.sidebar-overlay</code> - dark background overlay
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLORS SECTION -->
+    <div id="colors" class="component-section">
+        <h1 class="section-title">Color Palette</h1>
+        
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Primary Colors</span>
+                    <span class="card-badge">Brand</span>
+                </div>
+                <div class="preview-area">
+                    <div class="color-grid">
+                        <div class="color-item"><div class="color-swatch" style="background: #005bd3;"></div><div class="color-name">Primary Blue</div><div class="color-hex">#005bd3</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #1e293b;"></div><div class="color-name">Dark Slate</div><div class="color-hex">#1e293b</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #fafbfc;"></div><div class="color-name">Background</div><div class="color-hex">#fafbfc</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Semantic Colors</span>
+                    <span class="card-badge">Status</span>
+                </div>
+                <div class="preview-area">
+                    <div class="color-grid">
+                        <div class="color-item"><div class="color-swatch" style="background: #10b981;"></div><div class="color-name">Success</div><div class="color-hex">#10b981</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #eab308;"></div><div class="color-name">Warning</div><div class="color-hex">#eab308</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #ef4444;"></div><div class="color-name">Error</div><div class="color-hex">#ef4444</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #4f46e5;"></div><div class="color-name">Info</div><div class="color-hex">#4f46e5</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="card-header">
+                    <span class="card-title">Neutrals & Borders</span>
+                    <span class="card-badge">Grayscale</span>
+                </div>
+                <div class="preview-area">
+                    <div class="color-grid">
+                        <div class="color-item"><div class="color-swatch" style="background: #ffffff; border: 1px solid #e2e8f0;"></div><div class="color-name">White</div><div class="color-hex">#ffffff</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #f1f5f9;"></div><div class="color-name">Gray 100</div><div class="color-hex">#f1f5f9</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #e2e8f0;"></div><div class="color-name">Gray 200</div><div class="color-hex">#e2e8f0</div></div>
+                        <div class="color-item"><div class="color-swatch" style="background: #64748b;"></div><div class="color-name">Gray 500</div><div class="color-hex">#64748b</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="subsection-title">Gradient Usage</div>
+        <div class="component-grid">
+            <div class="component-card">
+                <div class="preview-area">
+                    <div style="background: linear-gradient(135deg, #1e2b3c 0%, #0f1722 100%); padding: 20px; border-radius: 16px; color: white; text-align: center;">
+                        Logo Gradient: #1e2b3c → #0f1722
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab switching functionality
+    const tabs = document.querySelectorAll('.tab-btn');
+    const sections = {
+        basics: document.getElementById('basics'),
+        components: document.getElementById('components'),
+        layout: document.getElementById('layout'),
+        colors: document.getElementById('colors')
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Update active section
+            Object.values(sections).forEach(section => {
+                if (section) section.classList.remove('active-section');
+            });
+            
+            if (sections[tabId]) {
+                sections[tabId].classList.add('active-section');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

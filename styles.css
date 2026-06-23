@@ -1,0 +1,570 @@
+/* ---------- RESET & GLOBAL (Shopify Core Aesthetic) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    height: 100vh;
+    overflow: hidden;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ----- HEADER: Shopify-style clean, elevated with subtle border & logo ----- */
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+    position: relative;
+    z-index: 10;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-icon {
+    background: #1a1a1a;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #1e2b3c 0%, #0f1722 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+}
+
+.header-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.badge-pro {
+    background: #f2f4f8;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-pro i {
+    font-size: 0.85rem;
+    color: #008060;
+}
+
+/* ----- LAYOUT: Flex refined with smooth transitions ----- */
+.layout {
+    display: flex;
+    height: calc(100vh - 70px);
+    width: 100%;
+    background: #fafbfc;
+}
+
+/* SIDEBAR: Modern, spacious, with subtle hover effects */
+#sidebar {
+    width: 300px;
+    background: #ffffff;
+    border-right: 1px solid #edf2f7;
+    overflow-y: auto;
+    padding: 24px 16px 32px 20px;
+    transition: all 0.2s ease;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+
+/* Custom scrollbar (Shopify subtle) */
+#sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+
+.chapter {
+    margin-bottom: 28px;
+}
+
+lesson-title {
+    display: block;
+    font-size: 0.80rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: bold;
+    color: #4b5563;
+    margin: 0 0 12px 0;
+    padding-left: 8px;
+}
+
+.lesson-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    margin: 2px 0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.lesson-link i {
+    width: 20px;
+    font-size: 0.9rem;
+    color: #8b9bb0;
+    transition: color 0.2s;
+}
+
+.lesson-link:hover {
+    background: #f6f8fc;
+    color: #0f1722;
+}
+
+.lesson-link:hover i {
+    color: #2c6e9e;
+}
+
+.lesson-link.active {
+    background: #eff3fa;
+    color: #005bd3;
+    font-weight: 600;
+}
+
+.lesson-link.active i {
+    color: #005bd3;
+}
+
+/* MAIN CONTENT AREA: card-like reading experience */
+main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 48px 48px 48px;
+    background: #fafbfc;
+}
+
+/* Inner content card (white elegant container) */
+#content {
+    max-width: 1140px;
+    margin: 0 auto;
+    background: white;
+    padding: 36px 44px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+    border: 1px solid #eff2f9;
+}
+
+/* Lesson content styling (Shopify typography) */
+#content h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(145deg, #1E2A3E, #0f1a24);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+#content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 32px 0 16px 0;
+    color: #0f1825;
+    letter-spacing: -0.2px;
+}
+
+#content p {
+    color: #2d3a4b;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.callout {
+    background: #F4F9FE;
+    border-left: 5px solid #005bd3;
+    padding: 20px 24px;
+    margin: 28px 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.callout:before {
+    content: "✨";
+    font-size: 1.5rem;
+}
+
+pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 20px;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    margin: 24px 0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+code {
+    font-family: monospace;
+}
+
+.hero-image {
+    margin: 28px 0;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background: #f1f5f9;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover img {
+    transform: scale(1.01);
+}
+
+/* Navigation buttons (Shopify-style primary/secondary) */
+.nav-buttons {
+    margin-top: 48px;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.nav-buttons button {
+    background: white;
+    border: 1px solid #dce3ec;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    color: #1f2a3e;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(2px);
+    background-color: #ffffff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.02);
+}
+
+.nav-buttons button i {
+    font-size: 0.9rem;
+}
+
+.nav-buttons button:hover {
+    background: #f8fafd;
+    border-color: #cbdde9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+}
+
+.nav-buttons button:active {
+    transform: translateY(1px);
+}
+
+/* loading animation */
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    gap: 12px;
+    color: #2c6e9e;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+    #sidebar {
+        width: 260px;
+    }
+
+    main {
+        padding: 20px 24px;
+    }
+
+    #content {
+        padding: 24px 28px;
+    }
+
+    #content h1 {
+        font-size: 1.8rem;
+    }
+
+    header {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #edf2f7;
+        padding: 16px;
+    }
+
+    main {
+        height: auto;
+    }
+
+    .nav-buttons button {
+        padding: 8px 20px;
+    }
+}
+
+/* extra polish for images inside content */
+#content img {
+    max-width: 100%;
+}
+
+/* subtle fade in */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lesson-transition {
+    animation: fadeSlideUp 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+/* ===== MOBILE RESPONSIVE WITH HAMBURGER MENU ===== */
+/* Add these styles to your existing CSS */
+
+/* Mobile menu button - hidden on desktop */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #1a1a1a;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    z-index: 1001;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar overlay (dark background when menu is open) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Sidebar modifications for mobile */
+@media (max-width: 768px) {
+    /* Header adjustments for hamburger */
+    header {
+        position: relative;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+    }
+    
+    .logo-area {
+        flex: 1;
+    }
+    
+    /* Sidebar becomes slide-out panel */
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 280px;
+        max-width: 85%;
+        height: 100vh;
+        z-index: 1000;
+        background: #ffffff;
+        border-right: none;
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        padding: 24px 16px 32px 20px;
+        overflow-y: auto;
+    }
+    
+    #sidebar.open {
+        left: 0;
+    }
+    
+    /* Main layout adjustments */
+    .layout {
+        flex-direction: column;
+    }
+    
+    main {
+        padding: 20px 16px;
+        width: 100%;
+    }
+    
+    #content {
+        padding: 20px 24px;
+        border-radius: 20px;
+    }
+    
+    #content h1 {
+        font-size: 1.6rem;
+    }
+    
+    /* Close button inside sidebar for mobile */
+    .sidebar-close {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #edf2f7;
+    }
+    
+    .sidebar-close button {
+        background: transparent;
+        border: none;
+        font-size: 1.3rem;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 6px 10px;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+    
+    .sidebar-close button:hover {
+        background: #f3f4f6;
+        color: #1f2937;
+    }
+    
+    /* Body scroll lock when menu is open */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* ===== DESKTOP FIXES - HIDE MOBILE ELEMENTS ===== */
+@media (min-width: 769px) {
+    /* Hide close button on desktop */
+    .sidebar-close {
+        display: none !important;
+    }
+    
+    /* Ensure sidebar is visible and properly positioned on desktop */
+    #sidebar {
+        position: relative !important;
+        left: 0 !important;
+        width: 280px;
+        height: auto;
+        box-shadow: none;
+        transform: none !important;
+    }
+    
+    /* Remove any residual overlay on desktop */
+    .sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #sidebar {
+        width: 260px;
+    }
+    
+    main {
+        padding: 24px 28px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    #sidebar {
+        width: 260px;
+    }
+    
+    .nav-buttons button {
+        padding: 10px 18px;
+        font-size: 0.85rem;
+    }
+    
+    .badge-pro span {
+        display: none;
+    }
+    
+    .badge-pro {
+        padding: 6px 10px;
+    }
+}
