@@ -21,23 +21,28 @@ const navigation = [
         ]
     },
     {
-        "title": "Core Concepts",
+        "title": "Product Management",
         "order": "002",
         "lessons": [
             {
-                "title": "Users",
+                "title": "Add Product",
                 "order": "001",
-                "file": "lessons/002-core-concepts/001-users.html"
+                "file": "lessons/002-product-management/001-add-product.html"
             },
             {
-                "title": "Teams",
+                "title": "Update Product",
                 "order": "002",
-                "file": "lessons/002-core-concepts/002-teams.html"
+                "file": "lessons/002-product-management/002-update-product.html"
             },
             {
-                "title": "Workflows",
+                "title": "Delete",
                 "order": "003",
-                "file": "lessons/002-core-concepts/003-workflows.html"
+                "file": "lessons/002-product-management/003-delete.html"
+            },
+            {
+                "title": "Others",
+                "order": "004",
+                "file": "lessons/002-product-management/004-others.html"
             }
         ]
     },
